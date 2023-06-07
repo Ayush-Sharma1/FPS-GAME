@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://dkoa7dbxvjmlf"]
+
+[ext_resource type="PackedScene" uid="uid://ces24wnxpitag" path="res://map.tscn" id="1_1eah6"]
+[ext_resource type="PackedScene" uid="uid://cdx0fyecnl8en" path="res://obstacle.tscn" id="2_40tof"]
+[ext_resource type="PackedScene" uid="uid://c87unlhbgjd12" path="res://player.tscn" id="3_acedn"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_urixp"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_lh135"]
+sky_material = SubResource("ProceduralSkyMaterial_urixp")
+
+[sub_resource type="Environment" id="Environment_i88cb"]
+background_mode = 2
+sky = SubResource("Sky_lh135")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="World" type="Node3D"]
+transform = Transform3D(-0.758225, -0.000269738, 0.651993, -0.00116205, 0.999999, -0.00093768, -0.651992, -0.00146862, -0.758225, 0, 0, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_i88cb")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.996907, 0.06672, -0.0415397, 0.00270734, 0.499066, 0.86656, 0.0785475, -0.863991, 0.497342, -0.08428, 31.3295, 0.833479)
+shadow_enabled = true
+
+[node name="StaticBody3D" parent="." instance=ExtResource("1_1eah6")]
+transform = Transform3D(2.89173, -1.16415e-09, 0, -9.31323e-10, 2.89173, -2.32831e-10, -8.34465e-07, -9.31323e-10, 2.89173, -3.53962, -1.03232, -4.8805)
+
+[node name="StaticBody3D2" parent="." instance=ExtResource("2_40tof")]
+transform = Transform3D(32.7739, 0, 0, 0, 2.71621, 0, 0, 0, 16.4146, 9.25852, 0.209698, -35.1615)
+
+[node name="StaticBody3D3" parent="." instance=ExtResource("2_40tof")]
+transform = Transform3D(-4.07251, 0.157891, 0.000169217, -0.0505735, -2.94543, -0.402153, 0.0905277, 5.45743, -0.217051, 8.79196, 3.11456, -26.4736)
+
+[node name="StaticBody3D4" parent="." instance=ExtResource("2_40tof")]
+transform = Transform3D(5.93749, 0, 0, 0, 1.265, 0, 0, 0, 1, 2.41675, -0.0820656, -2.85297)
+
+[node name="StaticBody3D5" parent="." instance=ExtResource("2_40tof")]
+transform = Transform3D(5.93749, 0, 0, 0, 1.265, 0, 0, 0, 1, 7.89263, 0.408788, 10.273)
+
+[node name="StaticBody3D6" parent="." instance=ExtResource("2_40tof")]
+transform = Transform3D(-3.62381, -5.82077e-11, 0, 0, 0.886392, 0, 1.19209e-07, -1.16415e-10, 4.39968, -8.4666, 0.238445, 9.14747)
+
+[node name="StaticBody3D7" parent="." instance=ExtResource("2_40tof")]
+transform = Transform3D(10.5818, 0, 0, 0, 3.29027, 0, 0, 0, 4.87866, -34.1785, -1.09368, -21.3704)
+
+[node name="StaticBody3D8" parent="." instance=ExtResource("2_40tof")]
+transform = Transform3D(10.5818, -2.32831e-10, 0, 0, 3.29027, 0, -4.76837e-07, -2.32831e-10, 4.87866, -30.7115, 0.429391, 19.2484)
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("3_acedn")]
+transform = Transform3D(1, -2.32831e-10, 2.98023e-08, 0, 1, -6.98492e-10, -2.98023e-08, -3.49246e-10, 1, 9.68436, 1.38633, 4.55861)
