@@ -1,6 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c87unlhbgjd12"]
+[gd_scene load_steps=8 format=3 uid="uid://c87unlhbgjd12"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_2388h"]
+[ext_resource type="PackedScene" uid="uid://noo0ef6cg5f" path="res://weapon.tscn" id="2_3yjei"]
+[ext_resource type="Script" path="res://weapon.gd" id="3_w2kbj"]
+[ext_resource type="Texture2D" uid="uid://5s5b7efjgxga" path="res://crosshair.png" id="4_0iuyv"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_w7v00"]
 
@@ -22,6 +25,42 @@ shape = SubResource("CapsuleShape3D_y5y5w")
 
 [node name="Camera3D" type="Camera3D" parent="Neck"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0214218, 0.486693, 0.0987089)
+
+[node name="gunray" type="RayCast3D" parent="Neck/Camera3D"]
+target_position = Vector3(0, 0, -1000)
+
+[node name="Hand" type="Node3D" parent="Neck/Camera3D"]
+
+[node name="weapon" type="Node3D" parent="Neck/Camera3D/Hand"]
+transform = Transform3D(-0.949426, -0.313992, 0, 0.313992, -0.949426, 0, 0, 0, 1, 0.925, -0.692, -1.239)
+
+[node name="Node3D" parent="Neck/Camera3D/Hand/weapon" instance=ExtResource("2_3yjei")]
+transform = Transform3D(-0.764498, 0.0591375, 0, -0.0776549, -0.582198, 0, 0, 0, 0.750024, 0, 0, 0.306241)
+script = ExtResource("3_w2kbj")
+damage = 20
+ammo = 30
+max_ammo = 30
+spare_ammo = 200
+ammo_per_shot = 1
+full_auto = true
+reload_time = 0.9
+firerate = 0.1
+rayCast = NodePath("../../../gunray")
+
+[node name="TextureRect" type="TextureRect" parent="Neck/Camera3D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_0iuyv")
+expand_mode = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_47h4i")

@@ -6,8 +6,8 @@ albedo_color = Color(0.117647, 0.247059, 0.4, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_7fu4t"]
 material = SubResource("StandardMaterial3D_x0vcy")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ifwpw"]
-size = Vector3(1.12255, 0.575443, 0.80638)
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_h6vqm"]
+points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5)
 
 [node name="StaticBody3D" type="StaticBody3D"]
 
@@ -16,5 +16,5 @@ transform = Transform3D(-0.616057, 0, 0, 0, -1.29269, 0, 0, 0, -0.631942, 0.1926
 mesh = SubResource("BoxMesh_7fu4t")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.557518, 0, 0, 0, 2.30487, 0, 0, 0, 0.825069, 0.189677, 0.546162, 0.206928)
-shape = SubResource("BoxShape3D_ifwpw")
+transform = Transform3D(-0.616057, 0, 0, 0, -1.29269, 0, 0, 0, -0.631942, 0.192647, 0.539945, 0.191365)
+shape = SubResource("ConvexPolygonShape3D_h6vqm")
