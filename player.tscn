@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://player.gd" id="1_2388h"]
 [ext_resource type="PackedScene" uid="uid://noo0ef6cg5f" path="res://weapon.tscn" id="2_3yjei"]
 [ext_resource type="Script" path="res://weapon.gd" id="3_w2kbj"]
-[ext_resource type="Texture2D" uid="uid://5s5b7efjgxga" path="res://crosshair.png" id="4_0iuyv"]
+[ext_resource type="Texture2D" uid="uid://ctgiqblvo5t5x" path="res://crosshair.png" id="4_0iuyv"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_w7v00"]
 
@@ -37,14 +37,14 @@ transform = Transform3D(-0.949426, -0.313992, 0, 0.313992, -0.949426, 0, 0, 0, 1
 [node name="Node3D" parent="Neck/Camera3D/Hand/weapon" instance=ExtResource("2_3yjei")]
 transform = Transform3D(-0.764498, 0.0591375, 0, -0.0776549, -0.582198, 0, 0, 0, 0.750024, 0, 0, 0.306241)
 script = ExtResource("3_w2kbj")
-damage = 20
-ammo = 30
-max_ammo = 30
+damage = 12
+ammo = 35
+max_ammo = 35
 spare_ammo = 200
 ammo_per_shot = 1
 full_auto = true
-reload_time = 0.9
-firerate = 0.1
+reload_time = 1.23
+firerate = 0.2
 rayCast = NodePath("../../../gunray")
 
 [node name="TextureRect" type="TextureRect" parent="Neck/Camera3D"]

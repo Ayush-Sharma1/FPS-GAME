@@ -3,7 +3,6 @@ extends CharacterBody3D
 @onready var nav_agent = $NavigationAgent3D
 var hp = 100
 var SPEED = 3.0 
-
 func _process(delta):
 	#calculate movement 
 	var distance = nav_agent.distance_to_target()
