@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dd24okprrevqw"]
+
+[ext_resource type="Script" path="res://bullet_holes.gd" id="1_34xvl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xixwc"]
+albedo_color = Color(0.239216, 0.239216, 0.239216, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ul6m6"]
+material = SubResource("StandardMaterial3D_xixwc")
+
+[node name="bullet_holes" type="MultiMeshInstance3D"]
+transform = Transform3D(9.25902, 0, 0, 0, 3.75564, 0, 0, 0, 1, 0, 0, 0)
+script = ExtResource("1_34xvl")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 45.0
+autostart = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.023495, 0, 0, 0, -9.38956e-10, -0.0559531, 0, 0.0214808, -2.44578e-09, 0, 0, 0)
+mesh = SubResource("CylinderMesh_ul6m6")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

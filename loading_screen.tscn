@@ -1,0 +1,101 @@
+[gd_scene load_steps=7 format=3 uid="uid://2wxkhdw502mb"]
+
+[ext_resource type="Script" path="res://LoadingScreen.gd" id="1_cqejl"]
+[ext_resource type="Texture2D" uid="uid://dd6widj0nkbka" path="res://2.jpg" id="2_mpypr"]
+[ext_resource type="FontFile" uid="uid://cuvu2rm834xs7" path="res://deathstarfony/DeathStar-VmWB.ttf" id="3_lq6ea"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_awy2f"]
+bg_color = Color(0.215686, 0.203922, 0.176471, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_knimg"]
+bg_color = Color(0.956863, 0.733333, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_odtjd"]
+font = ExtResource("3_lq6ea")
+font_size = 220
+font_color = Color(0.419608, 0.419608, 0.419608, 1)
+
+[node name="LoadingScreen" type="CanvasLayer"]
+script = ExtResource("1_cqejl")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.016
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.432
+offset_top = -236.0
+offset_right = 18.0
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_mpypr")
+
+[node name="Label" type="Label" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.0
+offset_top = -13.0
+offset_right = 43.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "LOADING..."
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+anchors_preset = -1
+anchor_left = 0.045
+anchor_top = 0.944
+anchor_right = 0.976
+anchor_bottom = 0.965
+offset_left = 0.159996
+offset_top = -13.712
+offset_right = -0.352051
+offset_bottom = -0.320007
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/background = SubResource("StyleBoxFlat_awy2f")
+theme_override_styles/fill = SubResource("StyleBoxFlat_knimg")
+step = 1.0
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.076
+anchor_right = 0.924
+anchor_bottom = 0.36
+offset_left = -0.052002
+offset_right = 0.052002
+offset_bottom = -0.280014
+grow_horizontal = 2
+text = "PROXIMA"
+label_settings = SubResource("LabelSettings_odtjd")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.076
+anchor_right = 0.924
+anchor_bottom = 0.36
+offset_left = -0.052002
+offset_right = 0.052002
+offset_bottom = -0.280014
+grow_horizontal = 2
+text = "PROXIMA"
+label_settings = SubResource("LabelSettings_odtjd")
+horizontal_alignment = 1
+vertical_alignment = 1

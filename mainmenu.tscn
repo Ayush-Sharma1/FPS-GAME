@@ -1,0 +1,90 @@
+[gd_scene load_steps=8 format=3 uid="uid://5qpp0e8pwuvk"]
+
+[ext_resource type="Script" path="res://mainmenu.gd" id="1_2t262"]
+[ext_resource type="Texture2D" uid="uid://cjou6h5ic833g" path="res://1.jpg" id="2_i0phl"]
+[ext_resource type="AudioStream" uid="uid://coutg4lnhjn44" path="res://ASSETS/new/main menu sound.mp3" id="3_bbwc8"]
+[ext_resource type="FontFile" uid="uid://cuvu2rm834xs7" path="res://FONT/deathstarfony/DeathStar-VmWB.ttf" id="4_14dny"]
+[ext_resource type="Texture2D" uid="uid://b8sa5vax52fd7" path="res://ASSETS/Play_button.png" id="7_n4kkk"]
+[ext_resource type="Texture2D" uid="uid://d08c8mv5c7ftq" path="res://ASSETS/quit_button.png" id="8_kpsse"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ovib6"]
+font = ExtResource("4_14dny")
+font_size = 220
+font_color = Color(0.419608, 0.419608, 0.419608, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2t262")
+
+[node name="background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -7.0
+offset_top = -355.0
+offset_right = 25.0
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_i0phl")
+expand_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="background_music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_bbwc8")
+volume_db = 1.0
+autoplay = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.076
+anchor_right = 0.924
+anchor_bottom = 0.36
+offset_left = -0.052002
+offset_right = 0.052002
+offset_bottom = -0.280014
+grow_horizontal = 2
+text = "PROXIMA"
+label_settings = SubResource("LabelSettings_ovib6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PLAY" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.494
+anchor_top = 0.534
+anchor_right = 0.494
+anchor_bottom = 0.534
+offset_left = -150.088
+offset_top = -50.032
+offset_right = 149.912
+offset_bottom = 49.968
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("7_n4kkk")
+
+[node name="QUIT" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.49
+anchor_top = 0.532
+anchor_right = 0.49
+anchor_bottom = 0.532
+offset_left = -145.48
+offset_top = 139.264
+offset_right = 154.52
+offset_bottom = 239.264
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("8_kpsse")
+
+[connection signal="pressed" from="PLAY" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="QUIT" to="." method="_on_quit_pressed"]
