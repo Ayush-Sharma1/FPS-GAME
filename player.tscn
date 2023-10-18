@@ -1,51 +1,43 @@
-[gd_scene load_steps=8 format=3 uid="uid://c87unlhbgjd12"]
+[gd_scene load_steps=9 format=3 uid="uid://c87unlhbgjd12"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_2388h"]
-[ext_resource type="PackedScene" uid="uid://noo0ef6cg5f" path="res://weapon.tscn" id="2_3yjei"]
-[ext_resource type="Script" path="res://weapon.gd" id="3_w2kbj"]
+[ext_resource type="Script" path="res://player.gd" id="2_pbqgu"]
+[ext_resource type="PackedScene" uid="uid://cpxxww8uwwc0v" path="res://low_poly_fps_mp_5.tscn" id="3_tmesi"]
 [ext_resource type="Texture2D" uid="uid://ctgiqblvo5t5x" path="res://crosshair.png" id="4_0iuyv"]
+[ext_resource type="AudioStream" uid="uid://lmjgdjh87c86" path="res://ASSETS/new/walk_sound.mp3" id="4_ygj2j"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_w7v00"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y5y5w"]
+radius = 0.6
+height = 5.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_47h4i"]
+radius = 0.6
+height = 5.0
 
-[node name="CharacterBody3D" type="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.2, 0)
-script = ExtResource("1_2388h")
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_73gsd"]
+bg_color = Color(0.843137, 0, 0.164706, 0.984314)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2byem"]
+bg_color = Color(0.054902, 0.298039, 0.572549, 1)
+
+[node name="CharacterBody3D" type="CharacterBody3D" groups=["player"]]
+transform = Transform3D(-0.933581, 0, 0.358368, 0, 1, 0, -0.358368, 0, -0.933581, 0, 0, 0)
+script = ExtResource("2_pbqgu")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_w7v00")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D"]
-shape = SubResource("CapsuleShape3D_y5y5w")
-
 [node name="Neck" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.40743, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Neck"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0214218, 0.486693, 0.0987089)
+transform = Transform3D(0.999999, 0, -5.96046e-08, 0, 1, 0, 2.98023e-08, 0, 0.999999, 0.0207374, 0.096149, -0.366272)
 
 [node name="gunray" type="RayCast3D" parent="Neck/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0376376, 0, 0)
 target_position = Vector3(0, 0, -1000)
 
 [node name="Hand" type="Node3D" parent="Neck/Camera3D"]
-
-[node name="weapon" type="Node3D" parent="Neck/Camera3D/Hand"]
-transform = Transform3D(-0.949426, -0.313992, 0, 0.313992, -0.949426, 0, 0, 0, 1, 0.925, -0.692, -1.239)
-
-[node name="Node3D" parent="Neck/Camera3D/Hand/weapon" instance=ExtResource("2_3yjei")]
-transform = Transform3D(-0.764498, 0.0591375, 0, -0.0776549, -0.582198, 0, 0, 0, 0.750024, 0, 0, 0.306241)
-script = ExtResource("3_w2kbj")
-damage = 12
-ammo = 35
-max_ammo = 35
-spare_ammo = 200
-ammo_per_shot = 1
-full_auto = true
-reload_time = 1.23
-firerate = 0.2
-rayCast = NodePath("../../../gunray")
+transform = Transform3D(-1, -5.48713e-07, 2.47509e-06, 0, 0.976296, 0.216439, -2.53518e-06, 0.216439, -0.976296, 0.32, -0.21, -0.6)
 
 [node name="TextureRect" type="TextureRect" parent="Neck/Camera3D"]
 anchors_preset = 8
@@ -62,5 +54,77 @@ grow_vertical = 2
 texture = ExtResource("4_0iuyv")
 expand_mode = 1
 
+[node name="LowPoly_FPS_MP5" parent="Neck/Camera3D" instance=ExtResource("3_tmesi")]
+transform = Transform3D(-1, 0, -1.19209e-07, 0, 1, 0, 1.19209e-07, 0, -1, 0.085, -0.53, -0.06)
+rayCast = NodePath("../gunray")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_47h4i")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+anchors_preset = -1
+anchor_left = 0.379
+anchor_top = 0.958
+anchor_right = 0.621
+anchor_bottom = 1.0
+offset_left = 0.391998
+offset_top = 0.215942
+offset_right = -0.39209
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/background = SubResource("StyleBoxFlat_73gsd")
+theme_override_styles/fill = SubResource("StyleBoxFlat_2byem")
+show_percentage = false
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Ammo" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.803
+anchor_top = 0.728
+anchor_right = 0.914
+anchor_bottom = 0.84
+offset_left = -0.0560303
+offset_top = 19.256
+offset_right = 0.0720215
+offset_bottom = -0.320007
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.964706, 0.964706, 0.964706, 1)
+theme_override_font_sizes/font_size = 50
+text = "20"
+
+[node name="Spare" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.81
+anchor_top = 0.851
+anchor_right = 0.854
+anchor_bottom = 0.92
+offset_left = -0.119995
+offset_top = -0.447998
+offset_right = 0.191956
+offset_bottom = -0.160034
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.698039, 0.698039, 0.698039, 1)
+theme_override_font_sizes/font_size = 30
+text = "100"
+
+[node name="walking" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_ygj2j")
+volume_db = 40.0
+
+[node name="sprinting_audio" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_ygj2j")
+volume_db = 4.47
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
